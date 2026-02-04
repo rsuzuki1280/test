@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>和心のお宿 | 癒やしと伝統の旅館</title>
+    <style>
+        /* 基本設定 */
+        body {
+            font-family: "Yu Mincho", "YuMincho", "MS PMincho", serif; /* 旅館らしい明朝体 */
+            line-height: 1.8;
+            color: #333;
+            margin: 0;
+            background-color: #fcfaf2;
+        }
+
+        header {
+            background-color: #fff;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #555;
+            font-size: 0.9rem;
+        }
+
+        /* ヒーローエリア */
+        .hero {
+            height: 60vh;
+            background-color: #d1c7b7; /* 画像がない場合の仮背景 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-shadow: 1px 1px 10px rgba(0,0,0,0.3);
+            background-image: url('https://via.placeholder.com/1200x600?text=旅館のメイン写真');
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* コンテンツ幅 */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        section {
+            margin-bottom: 80px;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 2rem;
+            border-bottom: 1px solid #c2a371;
+            display: inline-block;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+
+        /* グリッドレイアウト */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .card img {
+            width: 100%;
+            height: auto;
+        }
+
+        footer {
+            background-color: #4a453a;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        /* レスポンシブ */
+        @media (max-width: 600px) {
+            h2 { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>和心のお宿</h1>
+    <nav>
+        <a href="#about">当館について</a>
+        <a href="#rooms">客室</a>
+        <a href="#onsen">温泉</a>
+        <a href="#cuisine">お料理</a>
+        <a href="#access">アクセス</a>
+    </nav>
+</header>
+
+<div class="hero">
+    <div style="text-align: center;">
+        <h2 style="border:none; color:white;">日常を忘れ、静寂に浸る。</h2>
+    </div>
+</div>
+
+<div class="container">
+    <section id="about">
+        <h2>当館について</h2>
+        <p>創業百年の歴史が紡ぐ、贅沢なひととき。<br>
+        四季折々の景色を楽しみながら、心ゆくまでお寛ぎください。</p>
+    </section>
+
+    <section id="rooms">
+        <h2>客室のご案内</h2>
+        <div class="grid">
+            <div class="card">
+                <img src="https://via.placeholder.com/400x250?text=和室" alt="和室">
+                <h3>露天風呂付客室</h3>
+                <p>プライベートな空間で、源泉掛け流しの湯を堪能。</p>
+            </div>
+            <div class="card">
+                <img src="https://via.placeholder.com/400x250?text=特別室" alt="特別室">
+                <h3>スタンダード和室</h3>
+                <p>畳の香りに包まれる、伝統的な和のしつらえ。</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="onsen">
+        <h2>名湯の癒やし</h2>
+        <p>古くから愛されてきた天然温泉。<br>
+        肌に優しい柔らかなお湯が、日々の疲れを解きほぐします。</p>
+    </section>
+
+    <section id="cuisine">
+        <h2>旬を味わう料理</h2>
+        <p>地元の新鮮な食材をふんだんに使った会席料理。<br>
+        料理長が腕によりをかけた逸品の数々をお楽しみください。</p>
+    </section>
+
+    <section id="access">
+        <h2>アクセス</h2>
+        <p>〒000-0000 〇〇県〇〇市温泉町1-2-3<br>
+        JR「温泉駅」より送迎バスで10分</p>
+        </section>
+</div>
+
+<footer>
+    <p>&copy; 2024 和心のお宿 All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>
