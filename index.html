@@ -221,7 +221,7 @@
                     newsItem.classList.add('news-item');
                     const date = new Date(item.publishedAt).toLocaleDateString('ja-JP');
                     newsItem.innerHTML = `
-                        <h3>${item.title}</h3>
+                        <a href="news-detail.html?id=${item.id}"><h3>${item.title}</h3></a>
                         <p class="news-date">${date}</p>
                         <div class="news-content">${item.content}</div>
                     `;

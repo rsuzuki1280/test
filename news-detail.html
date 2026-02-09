@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新着情報詳細 | 癒しのお宿</title>
+    <link rel="stylesheet" href="style.css"> <!-- Assuming you'll create a style.css later -->
+    <style>
+        body {
+            font-family: "Yu Mincho", "YuMincho", "MS PMincho", serif;
+            line-height: 1.8;
+            color: #333;
+            margin: 0;
+            background-color: #fcfaf2;
+            padding-top: 20px; /* Adjust as needed */
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        h1 {
+            font-size: 2.2rem;
+            color: #4a453a;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #c2a371;
+            padding-bottom: 10px;
+        }
+        .news-detail-meta {
+            font-size: 0.9rem;
+            color: #888;
+            margin-bottom: 20px;
+        }
+        .news-detail-photo img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+        }
+        .news-detail-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            color: #c2a371;
+            text-decoration: none;
+            border: 1px solid #c2a371;
+            padding: 10px 15px;
+            transition: background-color 0.3s ease;
+        }
+        .back-link:hover {
+            background-color: #c2a371;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="news-detail-content">
+            <p>読み込み中...</p>
+        </div>
+        <a href="index.html" class="back-link">一覧へ戻る</a>
+    </div>
+
+    <script>
+        const serviceId = 'test260209';
+        const apiKey = 'YDfIUAYhDO2TtiWIt80O5AjP4ixzixSh58Uq';
+        const endpoint = 'news';
+
+        async function fetchNewsDetail() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const newsId = urlParams.get('id');
+
+            if (!newsId) {
+                document.getElementById('news-detail-content').innerHTML = '<p>記事が見つかりませんでした。</p>';
+                return;
+            }
+
+            try {
+                const response = await fetch(`https://${serviceId}.microcms.io/api/v1/${endpoint}/${newsId}`, {
+                    headers: { 'X-MICROCMS-API-KEY': apiKey }
+                });
+                const data = await response.json();
+                const detailContent = document.getElementById('news-detail-content');
+
+                if (data) {
+                    const date = new Date(data.publishedAt).toLocaleDateString('ja-JP');
+                    detailContent.innerHTML = `
+                        <h1>${data.title}</h1>
+                        <p class="news-detail-meta">公開日: ${date}</p>
+                        ${data.photo ? `<div class="news-detail-photo"><img src="${data.photo.url}" alt="${data.title}"></div>` : ''}
+                        <div class="news-detail-content">${data.txt}</div>
+                    `;
+                } else {
+                    detailContent.innerHTML = '<p>記事の詳細を読み込めませんでした。</p>';
+                }
+            } catch (error) {
+                console.error('Error fetching news detail:', error);
+                document.getElementById('news-detail-content').innerHTML = '<p>記事の詳細の読み込みに失敗しました。</p>';
+            }
+        }
+
+        fetchNewsDetail();
+    </script>
+</body>
+</html>
